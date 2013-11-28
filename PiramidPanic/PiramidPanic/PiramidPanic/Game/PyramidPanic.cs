@@ -14,8 +14,10 @@ namespace PiramidPanic
 
     public class PyramidPanic : Microsoft.Xna.Framework.Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        //fields, de velden van deze class
+        private GraphicsDeviceManager graphics;
+        private SpriteBatch spriteBatch;
+        private KeyboardState ks;
 
         public PyramidPanic()
         {
@@ -26,7 +28,21 @@ namespace PiramidPanic
       
         protected override void Initialize()
         {
-            
+            // maakt de muiscursor zichtbaar in het canvas
+            IsMouseVisible = true;
+
+            //veranderd de naav van de window
+            this.Window.Title = "Pyramid Panic";
+
+            //veranderd de breedte van het canvas
+            this.graphics.PreferredBackBufferWidth = 640;
+
+            //veranderd de hoogte van het canvas
+            this.graphics.PreferredBackBufferHeight = 480;
+
+            //past de canvas verandering toe
+            this.graphics.ApplyChanges();
+
 
             base.Initialize();
         }
@@ -35,7 +51,7 @@ namespace PiramidPanic
         protected override void LoadContent()
         {
             
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+           this.spriteBatch = new SpriteBatch(GraphicsDevice);
 
         }
 
@@ -48,8 +64,10 @@ namespace PiramidPanic
       
         protected override void Update(GameTime gameTime)
         {
-          
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+
+
+                if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || 
+                (Keyboard.GetState().IsKeyDown(Keys.Escape)))
                 this.Exit();
 
             

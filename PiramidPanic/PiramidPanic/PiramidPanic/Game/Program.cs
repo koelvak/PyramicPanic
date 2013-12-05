@@ -1,6 +1,6 @@
 using System;
 
-namespace PiramidPanic
+namespace PyramidPanic
 {
 #if WINDOWS || XBOX
     static class Program

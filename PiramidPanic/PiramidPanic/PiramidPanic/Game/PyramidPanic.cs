@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xna.Framework;
@@ -9,78 +8,126 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
-namespace PiramidPanic
+namespace PyramidPanic
 {
-
+   
     public class PyramidPanic : Microsoft.Xna.Framework.Game
     {
-        //fields, de velden van deze class
+        // Fields, de velden van deze class 
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        private KeyboardState ks;
+
+        // Maak een variabele aan van het type StartScene
+        private StartScene startScene; // Camelcase notatie
+
+        // Maak een variabele aan van het type PlayScene
+        private PlayScene playScene; // Camelcase notatie
+
+        // Maak een variabele aan van het type GameOverScene
+        private gamoverScene gamoverScene; // Camelcase notatie
+        
+        
+        // Maak een variabele aan van het type HelpScene
+        private ControlScene controlscene; // Camelcase notatie
+
+        // Maak een variabele aan van het type GameEndScene
+        private wonscene wonscene; // Camelcase notatie
+
+        /* De variabele die alle verschillende Scene-objecten kan bevatten is van het type 
+         * IGameState. Dit is geen class, maar een nieuw objecttype Interface
+         */
+        private IGameState gameState;
+
+        //properties
+        public IGameState GameState
+        {
+            get { return this.gameState; }
+
+        }
 
         public PyramidPanic()
         {
-            graphics = new GraphicsDeviceManager(this);
+            this.graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
         }
 
-      
+        
         protected override void Initialize()
         {
-            // maakt de muiscursor zichtbaar in het canvas
+            // Maakt de muiscursor zichtbaar in het canvas
             IsMouseVisible = true;
-
-            //veranderd de naav van de window
+            
+            // Veranderd de titel van het canvas
             this.Window.Title = "Pyramid Panic";
-
-            //veranderd de breedte van het canvas
+            
+            // Veranderd de breedte van het canvas
             this.graphics.PreferredBackBufferWidth = 640;
 
-            //veranderd de hoogte van het canvas
+            //Veranderd de hoogte van het canvas
             this.graphics.PreferredBackBufferHeight = 480;
 
-            //past de canvas verandering toe
+            // Past de veranderingen betreffende het canvas toe
             this.graphics.ApplyChanges();
-
-
             base.Initialize();
         }
 
-       
+        
         protected override void LoadContent()
         {
-            
-           this.spriteBatch = new SpriteBatch(GraphicsDevice);
+            this.spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            // Maak een instantie aan van de class StartScene
+            this.startScene = new StartScene(this);
+
+            // Maak een instantie aan van de class StartScene
+            this.playScene = new PlayScene(this);
+
+            // Maak een instantie aan van de class GameOverScene
+            this.gamoverScene = new gamoverScene(this);
+
+            // Maak een instantie aan van de class HelpScene
+            this.controlscene = new ControlScene(this);
+
+            // Maak een instantie aan van de class GameEndScene
+            this.wonscene = new wonscene(this);
+
+            this.gameState = this.wonscene;
         }
 
-     
+        
         protected override void UnloadContent()
         {
             
         }
 
-      
+        
         protected override void Update(GameTime gameTime)
         {
-
-
-                if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || 
-                (Keyboard.GetState().IsKeyDown(Keys.Escape)))
+            // Wanneer de gamepad Back toets of de toetsenbord Escape toets wordt ingedrukt dan
+            // Stopt het spel 
+            if ( (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed) ||
+                 (Keyboard.GetState().IsKeyDown(Keys.Escape)))
                 this.Exit();
-
             
+            // Roep de Update(gameTime) method aan van het startScene-object
+            this.gameState.Update(gameTime);
 
             base.Update(gameTime);
         }
 
-
+        
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Purple);
 
-   
+            // Roep de Begin() method aan van het spriteBatch-object
+            this.spriteBatch.Begin();
+
+            // Roep de Draw(gameTime) method aan van het startScene-object
+            this.gameState.Draw(gameTime);
+
+            // Roep de End() method aan van het spriteBatch-object
+            this.spriteBatch.End();
 
             base.Draw(gameTime);
         }

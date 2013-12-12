@@ -56,7 +56,8 @@ namespace PyramidPanic
             this.quitButton =
                 new Images(this.game, @"StartScene\Button_quit", new Vector2(this.left + 4 * this.space, this.top));
 
-            this.startButton.Color = Color.Gold;
+            this.startButton.Color = Color.White;
+            this.loadButton.Color = Color.Gold;
             // Maak een nieuw object van het type List<Image>
             this.buttonList = new List<Images>();
 

@@ -63,7 +63,7 @@ namespace PyramidPanic
 
         public void Draw(GameTime gametime);
         {
-           this.Game.Draw(this.texture, this.Rectangle);
+           this.game.Draw(this.texture, this.Rectangle);
         }
         #endregion
     }

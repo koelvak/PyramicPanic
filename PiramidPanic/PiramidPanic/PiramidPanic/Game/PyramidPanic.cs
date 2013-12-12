@@ -98,10 +98,10 @@ namespace PyramidPanic
             this.Window.Title = "Pyramid Panic";
             
             // Veranderd de breedte van het canvas
-            this.graphics.PreferredBackBufferWidth = 620;
+            this.graphics.PreferredBackBufferWidth = 640;
 
             //Veranderd de hoogte van het canvas
-            this.graphics.PreferredBackBufferHeight = 380;
+            this.graphics.PreferredBackBufferHeight = 480;
 
             // Past de veranderingen betreffende het canvas toe
             this.graphics.ApplyChanges();

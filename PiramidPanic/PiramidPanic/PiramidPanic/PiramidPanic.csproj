@@ -110,6 +110,7 @@
     <Compile Include="GameScenes\ControlScene\ControlScene.cs" />
     <Compile Include="GameScenes\gamoverScene\GameOverScenecs.cs" />
     <Compile Include="GameScenes\PlayScene\Playscene.cs" />
+    <Compile Include="GameScenes\StartScene\Menu.cs" />
     <Compile Include="GameScenes\StartScene\StartScene.cs" />
     <Compile Include="GameScenes\wonScene\WonScene.cs" />
     <Compile Include="Game\IGameState.cs" />
@@ -120,13 +121,6 @@
     <Compile Include="Game\PyramidPanic.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="GameScenes\StartScene\Background.png" />
-    <Content Include="GameScenes\StartScene\Button_help.png" />
-    <Content Include="GameScenes\StartScene\Button_load.png" />
-    <Content Include="GameScenes\StartScene\Button_quit.png" />
-    <Content Include="GameScenes\StartScene\Button_scores.png" />
-    <Content Include="GameScenes\StartScene\Button_start.png" />
-    <Content Include="GameScenes\StartScene\Title.png" />
     <Content Include="GameThumbnail.png" />
     <Content Include="pyramid.ico" />
   </ItemGroup>

@@ -21,6 +21,9 @@ namespace PyramidPanic
 
         //maak een varibale aan genaamd title, deze is van he type Image
         private Images gameTitel;
+
+        private Menu menu;
+
         private Images background;
        
 
@@ -43,8 +46,11 @@ namespace PyramidPanic
         //LoadContent
         public void LoadContent()
         {
-            this.background = new Images(this.game, @"StartScene\Background.png", new Vector2(0f, 0f));
-            this.gameTitel = new Images(this.game, @"StartScene\Title.png", new Vector2(0f, 0f));
+            this.background = new Images(this.game, @"StartScene\Background", new Vector2(0f, 0f));
+            this.gameTitel = new Images(this.game, @"StartScene\Title", new Vector2(105f, 30f));
+            
+
+            this.menu = new Menu(this.game);
          
         }
 
@@ -64,6 +70,7 @@ namespace PyramidPanic
             this.game.GraphicsDevice.Clear(Color.Red);
             this.background.Draw(gameTime);
             this.gameTitel.Draw(gameTime);
+            this.menu.Draw(gameTime);
    
 
                

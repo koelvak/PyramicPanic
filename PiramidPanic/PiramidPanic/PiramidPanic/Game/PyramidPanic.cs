@@ -31,7 +31,7 @@ namespace PyramidPanic
         private ControlScene controlscene; // Camelcase notatie
 
         // Maak een variabele aan van het type GameEndScene
-        private wonscene wonscene; // Camelcase notatie
+        private Wonscene wonscene; // Camelcase notatie
 
         /* De variabele die alle verschillende Scene-objecten kan bevatten is van het type 
          * IGameState. Dit is geen class, maar een nieuw objecttype Interface
@@ -42,8 +42,45 @@ namespace PyramidPanic
         public IGameState GameState
         {
             get { return this.gameState; }
-
+            set { this.gameState = value; }
         }
+
+        public Wonscene WonScene
+        {
+            get { return this.wonscene; }
+        }
+
+        public PlayScene PlayScene
+        {
+            get { return this.playScene; }
+        }
+
+        public ControlScene ControlScene
+        {
+            get { return this.controlscene; }
+        }
+
+        public StartScene StartScene
+        {
+            get { return this.startScene; }
+        }
+
+        public gamoverScene gameoverscene
+        {
+            get { return this.gameoverscene; }
+        }
+
+        public SpriteBatch SpriteBatch
+        {
+            get { return this.spriteBatch; }
+        }
+
+
+
+        
+        
+
+
 
         public PyramidPanic()
         {
@@ -61,10 +98,10 @@ namespace PyramidPanic
             this.Window.Title = "Pyramid Panic";
             
             // Veranderd de breedte van het canvas
-            this.graphics.PreferredBackBufferWidth = 640;
+            this.graphics.PreferredBackBufferWidth = 1250;
 
             //Veranderd de hoogte van het canvas
-            this.graphics.PreferredBackBufferHeight = 480;
+            this.graphics.PreferredBackBufferHeight = 720;
 
             // Past de veranderingen betreffende het canvas toe
             this.graphics.ApplyChanges();
@@ -89,33 +126,38 @@ namespace PyramidPanic
             this.controlscene = new ControlScene(this);
 
             // Maak een instantie aan van de class GameEndScene
-            this.wonscene = new wonscene(this);
+            this.wonscene = new Wonscene(this);
 
             this.gameState = this.wonscene;
         }
 
-        
+
         protected override void UnloadContent()
         {
-            
+
         }
 
-        
+
         protected override void Update(GameTime gameTime)
         {
             // Wanneer de gamepad Back toets of de toetsenbord Escape toets wordt ingedrukt dan
             // Stopt het spel 
-            if ( (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed) ||
+            if ((GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed) ||
                  (Keyboard.GetState().IsKeyDown(Keys.Escape)))
                 this.Exit();
-            
+
+            // Roep de Update method aan van de Input class
+            Input.Update();
+
             // Roep de Update(gameTime) method aan van het startScene-object
             this.gameState.Update(gameTime);
+
+
 
             base.Update(gameTime);
         }
 
-        
+
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Purple);

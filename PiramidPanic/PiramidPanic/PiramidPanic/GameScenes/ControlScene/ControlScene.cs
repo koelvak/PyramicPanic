@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace PyramidPanic
 {
-    class ControlScene
+    public class ControlScene : IGameState
     {
 
         //fiel
@@ -29,26 +29,30 @@ namespace PyramidPanic
         //Initialize
         public void Initialize()
         {
-
-
+            this.LoadContent();
         }
 
-        // Loadcontent
-        public void loadContent()
+
+        //LoadContent
+        public void LoadContent()
         {
 
         }
 
-        //update
-        public void Update(GameTime gametime)
-        {
 
+        //Update
+        public void Update(GameTime gameTime)
+        {
+            if (Input.EdgeDetectorKeyDown(Keys.Right))
+            {
+                this.game.GameState = this.game.WonScene;
+            }
         }
 
-        //draw
+        //Draw
         public void Draw(GameTime gameTime)
         {
-            this.game.GraphicsDevice.Clear(Color.PaleGoldenrod);
+            this.game.GraphicsDevice.Clear(Color.Yellow);
         }
     }
 }

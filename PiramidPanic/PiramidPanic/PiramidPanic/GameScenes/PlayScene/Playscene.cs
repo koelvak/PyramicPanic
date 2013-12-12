@@ -40,7 +40,10 @@ namespace PyramidPanic
         //Update
         public void Update(GameTime gameTime)
         {
-
+            if (Input.EdgeDetectorKeyDown(Keys.Right))
+            {
+                this.game.GameState = this.game.ControlScene;
+            }
         }
 
         //Draw

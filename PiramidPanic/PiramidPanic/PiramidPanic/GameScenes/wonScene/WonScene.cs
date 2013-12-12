@@ -11,13 +11,13 @@ using Microsoft.Xna.Framework.Media;
 
 namespace PyramidPanic
 {
-    public class wonscene : IGameState
+    public class Wonscene : IGameState
     {
         //Fields
         private PyramidPanic game;
 
         //Constructor
-        public wonscene(PyramidPanic game)
+        public Wonscene(PyramidPanic game)
         {
             this.game = game;
             this.Initialize();
@@ -40,7 +40,10 @@ namespace PyramidPanic
         //Update
         public void Update(GameTime gameTime)
         {
-
+            if (Input.EdgeDetectorKeyDown(Keys.Right))
+            {
+                this.game.GameState = this.game.StartScene;
+            }
         }
 
         //Draw

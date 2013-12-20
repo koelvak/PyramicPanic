@@ -14,6 +14,7 @@ namespace PyramidPanic
     public class Menu
     {
         #region Fields
+        private enum Button { start, load, help, edit, score,  quit };
         private PyramidPanic game;
         private Images startButton, loadButton, helpButton, scoresButton, quitButton;
 
@@ -71,7 +72,15 @@ namespace PyramidPanic
         #endregion
 
         #region Update
-
+        public void Update(GameTime gametime)
+        {
+            if (Input.EdgeDetectorKeyDown(Keys.Right))
+            {
+                this.startButton.Color = Color.White;
+                this.loadButton.Color = Color.Gold;
+            }
+            
+        }
         #endregion
 
 

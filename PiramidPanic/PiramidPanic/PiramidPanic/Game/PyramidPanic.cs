@@ -33,6 +33,8 @@ namespace PyramidPanic
         // Maak een variabele aan van het type GameEndScene
         private Wonscene wonscene; // Camelcase notatie
 
+        private ScoreScene scorescene;
+
         /* De variabele die alle verschillende Scene-objecten kan bevatten is van het type 
          * IGameState. Dit is geen class, maar een nieuw objecttype Interface
          */
@@ -43,6 +45,11 @@ namespace PyramidPanic
         {
             get { return this.gameState; }
             set { this.gameState = value; }
+        }
+
+        public ScoreScene ScoreScene
+        {
+            get { return this.scorescene; }
         }
 
         public Wonscene WonScene
@@ -128,7 +135,12 @@ namespace PyramidPanic
             // Maak een instantie aan van de class GameEndScene
             this.wonscene = new Wonscene(this);
 
+            this.scorescene = new ScoreScene(this);
+
             this.gameState = this.wonscene;
+
+            
+
         }
 
 

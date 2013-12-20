@@ -110,6 +110,7 @@
     <Compile Include="GameScenes\ControlScene\ControlScene.cs" />
     <Compile Include="GameScenes\gamoverScene\GameOverScenecs.cs" />
     <Compile Include="GameScenes\PlayScene\Playscene.cs" />
+    <Compile Include="GameScenes\ScoreScene\ScoreScene.cs" />
     <Compile Include="GameScenes\StartScene\Menu.cs" />
     <Compile Include="GameScenes\StartScene\StartScene.cs" />
     <Compile Include="GameScenes\wonScene\WonScene.cs" />
